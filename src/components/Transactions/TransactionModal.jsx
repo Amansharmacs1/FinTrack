@@ -10,9 +10,9 @@ const CATEGORIES = {
 
 const PAYMENT_METHODS = ['Cash', 'UPI', 'Debit Card', 'Credit Card', 'Bank Transfer', 'Other'];
 
-export const TransactionModal = ({ isOpen, onClose, transaction = null }) => {
+export const TransactionModal = ({ isOpen, onClose, transaction = null, initialType = 'expense' }) => {
   const { addTransaction, editTransaction } = useFinance();
-  const [type, setType] = useState('expense');
+  const [type, setType] = useState(initialType);
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -28,14 +28,14 @@ export const TransactionModal = ({ isOpen, onClose, transaction = null }) => {
       setDate(transaction.date);
       setPaymentMethod(transaction.paymentMethod);
     } else {
-      setType('expense');
+      setType(initialType);
       setAmount('');
       setCategory('');
       setDescription('');
       setDate(new Date().toISOString().split('T')[0]);
       setPaymentMethod('UPI');
     }
-  }, [transaction, isOpen]);
+  }, [transaction, isOpen, initialType]);
 
   if (!isOpen) return null;
 

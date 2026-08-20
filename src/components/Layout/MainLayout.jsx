@@ -3,16 +3,18 @@ import { Sidebar } from './Sidebar';
 import { BottomNavigation } from './BottomNavigation';
 import { Header } from './Header';
 import { Outlet } from 'react-router-dom';
+import { QuickAdd } from '../UI/QuickAdd';
 
 export const MainLayout = () => {
   return (
     <div className="flex min-h-screen bg-finance-bg">
       <Sidebar />
-      <div className="flex-1 flex flex-col min-w-0 pb-16 md:pb-0">
+      <div className="flex-1 flex flex-col min-w-0 pb-16 md:pb-0 relative">
         <Header />
         <main className="flex-1 overflow-x-hidden p-4 md:p-8 max-w-7xl mx-auto w-full">
           <Outlet />
         </main>
+        <QuickAdd />
       </div>
       <BottomNavigation />
     </div>
