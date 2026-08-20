@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { FinanceProvider } from './context/FinanceContext';
 import { MainLayout } from './components/Layout/MainLayout';
 import { Dashboard } from './pages/Dashboard';
@@ -12,7 +12,7 @@ import { Settings } from './pages/Settings';
 function App() {
   return (
     <FinanceProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
@@ -23,7 +23,7 @@ function App() {
             <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </FinanceProvider>
   );
 }
